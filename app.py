@@ -92,7 +92,7 @@ def log(msg, *args, **kwargs):
 		if type(msg) is dict:
 			msg = json.dumps(msg)
 		else:
-			msg = str(msg).format(*args, **kwargs)
+			msg = unicode(msg).format(*args, **kwargs)
 		print (u"{}:{}".format(datetime.now(), msg))
 
 	except UnicodeEncodeError:
