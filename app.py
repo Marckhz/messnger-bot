@@ -36,7 +36,7 @@ def webhook():
 	#endpint for processing
 
 
-	data = request.get_json()
+	data = requests.get_json()
 	#log(data)
 
 	inteligent = False
