@@ -57,9 +57,9 @@ def webhook():
 							'Chalo',
 							trainer = 'chatterbot.trainers.ChatterBotCorpusTrainer'
 							)
-					chatbot.train("chatterbot.corpus.spanish")
-					response = chatbot.get_response(message_text)	
-					send_message(sender_id, response.text)
+						chatbot.train("chatterbot.corpus.spanish")
+						response = chatbot.get_response(message_text)	
+						send_message(sender_id, response.text)
 				else:
 					send_message(sender_id, "Hola")
 
