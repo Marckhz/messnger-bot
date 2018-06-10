@@ -60,8 +60,8 @@ def webhook():
 						chatbot.train("chatterbot.corpus.spanish")
 						response = chatbot.get_response(message_text)	
 						send_message(sender_id, response.text)
-				else:
-					send_message(sender_id, "Hola")
+					else:
+						send_message(sender_id, "Hola")
 
 
 				if messaging_event.get("delivery"):
