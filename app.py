@@ -86,19 +86,20 @@ def send_message(recipient_id, message_text):
 		log(r.status_code)
 		log(r.text)
 
-
+"""
 def log(msg, *args, **kwargs):
 	try:
 		if type(msg) is dict:
 			msg = json.dumps(msg)
 		else:
-			msg = unicode(msg).format(*args, **kwargs)
+			msg = str(msg).format(*args, **kwargs)
 		print (u"{}:{}".format(datetime.now(), msg))
 
 	except UnicodeEncodeError:
 		pass
 
 	sys.stdout.flush()
+"""
 
 if __name__ == '__main__':
 	app.run(debug=True)
