@@ -9,7 +9,7 @@ from datetime import datetime
 
 import requests
 
-from flask import Flask
+from flask import Flask, request
 
 
 app = Flask(__name__)
@@ -36,7 +36,7 @@ def webhook():
 	#endpint for processing
 
 
-	data = requests.get_json()
+	data = request.get_json()
 	#log(data)
 
 	inteligent = False
