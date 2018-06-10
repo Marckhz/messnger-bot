@@ -13,7 +13,7 @@ from flask import Flask, request
 
 
 app = Flask(__name__)
-ACCESS_TOKEN = " EAACv7CxbGFgBAGbblMrKb8OmAGuCadFccyOiVY399IzVGREgcPCZA6MXA5iJWRutwxhrhWTqmcq6XlL19acw7M1gncg5kmHGBWoZAwWeP6fZCvZC5ZBW3j5NLGpwiDHhvOpdm7NBDP1AL18BpoIbmGSdV1hhhmuyGKUmYwbSNigZDZD"
+ACCESS_TOKEN = "EAACv7CxbGFgBAGbblMrKb8OmAGuCadFccyOiVY399IzVGREgcPCZA6MXA5iJWRutwxhrhWTqmcq6XlL19acw7M1gncg5kmHGBWoZAwWeP6fZCvZC5ZBW3j5NLGpwiDHhvOpdm7NBDP1AL18BpoIbmGSdV1hhhmuyGKUmYwbSNigZDZD"
 VERIFY_TOKEN= "test_token"
 
 
