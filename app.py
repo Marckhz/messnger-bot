@@ -1,13 +1,15 @@
 import os
 import sys
 import json
+from chatterbot import ChatBot
+
 
 from datetime import datetime
 
 
 import requests
 
-from flask import Flask, request
+from flask import Flask
 
 
 app = Flask(__name__)
@@ -37,6 +39,8 @@ def webhook():
 	data = request.get_json()
 	#log(data)
 
+	inteligent = False
+
 	if data["object"] == "page":
 
 		for entry in data["entry"]:
@@ -48,7 +52,16 @@ def webhook():
 					recipient_id = messaging_event["recipient"]["id"]
 					message_text = messaging_event["message"]["text"]
 
-					send_message(sender_id, "roger that!")
+					if inteligent:
+						chatbot = Chatbot(
+							'Chalo',
+							trainer = 'chatterbot.trainers.ChatterBotCorpusTrainer'
+							)
+					chatbot.train("chatterbot.corpus.spanish")
+					response = chatbot.get_response(message_text)	
+					send_message(sender_id, response.text)
+				else:
+					send_message(sender_id, "Hola")
 
 
 				if messaging_event.get("delivery"):
@@ -83,25 +96,17 @@ def send_message(recipient_id, message_text):
 	})
 	r = requests.post("https://graph.facebook.com/v3/me/messages", params=params, headers=headers, data=data)
 	
-	"""
+	
 	if r.status_code !=200:
 		log(r.status_code)
 		log(r.text)
-"""
-"""
-def log(msg, *args, **kwargs):
-	try:
-		if type(msg) is dict:
-			msg = json.dumps(msg)
-		else:
-			msg = str(msg).format(*args, **kwargs)
-		print (u"{}:{}".format(datetime.now(), msg))
 
-	except UnicodeEncodeError:
-		pass
 
+def log(message):
+	print str(message)
 	sys.stdout.flush()
-"""
+	
+
 
 if __name__ == '__main__':
 	app.run(debug=True)
