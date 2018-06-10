@@ -90,7 +90,7 @@ def send_message(recipient_id, message_text):
 def log(msg, *args, **kwargs):
 	try:
 		if type(msg) is dict:
-			msg = json.dump(msg)
+			msg = json.dumps(msg)
 		else:
 			msg = unicode(msg).format(*args, **kwargs)
 		print (u"{}:{}".format(datetime.now(), msg))
